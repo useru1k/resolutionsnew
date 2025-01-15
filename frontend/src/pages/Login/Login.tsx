@@ -11,7 +11,7 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:9000/auth/login", {
+            const res = await axios.post("https://resolutions-pwwn.onrender.com/auth/login", {
                 username,
                 password,
             });
