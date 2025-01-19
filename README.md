@@ -110,11 +110,6 @@ TypeScript is enabled for type safety and better developer experience. Use `.ts`
 2. Deploy the `dist/` folder to your hosting provider.
 
 ---
-
-## Contributing
-
-Feel free to open issues or create pull requests to improve this template. Contributions are welcome!
-
 ---
 
 ## License
