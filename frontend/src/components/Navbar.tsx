@@ -13,7 +13,7 @@ const Navbar = () => {
     }, [token, navigate]);
 
     return (
-        <div className="flex justify-center gap-4 bg-[#5E2A8C] shadow-lg p-2 text-xl text-yellow-200">
+        <div className="flex justify-center gap-4 bg-[#f7f1de] shadow-lg p-2 text-xl text-black">
             <a className="hover:text-[#A2A9D3] cursor-pointer">
                 History
             </a>

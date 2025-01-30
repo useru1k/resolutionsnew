@@ -1,77 +1,75 @@
 import { useEffect, useState } from "react";
 import Contacts from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+// import Navbar from "../../components/Navbar";
+import Tasks from "./Tasks";
 
+const SectionCard = ({ children }: { children: React.ReactNode }) => (
+  <div className="bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+    {children}
+  </div>
+);
 
-const YesterdaysProgress = () => {
-    return (
-        <div className="bg-[#6A1B9A] shadow-md p-4 rounded-md">
-            <div className="flex flex-col justify-center items-center">
-                <h1 className="font-semibold text-[#FFFFFF] text-xl">Your Yesterday's Progress!</h1>
-                <p className="pt-2 text-[#F1F1F1] text-center">
-                    Ohh!! Sorry, you didn't make progress yesterday, but don’t worry, today is a new day!
-                </p>
-            </div>
-        </div>
-    );
-}
+const YesterdaysProgress = () => (
+  <SectionCard>
+    <h1 className="text-2xl font-bold mb-3 text-center">
+      Your Yesterday's Progress!
+    </h1>
+    <p className="text-gray-700 text-center">
+      Ohh!! Sorry, you didn't make progress yesterday, but don’t worry, today is
+      a new day!
+    </p>
+  </SectionCard>
+);
 
-const TodaysProgress = ({ currentTime }: { currentTime: string }) => {
-    return (
-        <div className="flex flex-col items-center gap-5 bg-[#1E3A8A] p-4 rounded-md w-full">
-            <div className="flex flex-col justify-center items-center">
-                <h1 className="font-semibold text-white text-xl">Your Today's Progress!</h1>
-                <p className="pt-2 text-center text-white">
-                    Hey! {currentTime} left, you can still complete the challenge and update your progress!
-                </p>
-            </div>
-            <p className="bg-[#4F46E5] hover:bg-[#4338CA] px-3 py-2 rounded text-white cursor-pointer">Click to update your progress</p>
-        </div>
-    );
-};
+const TodaysProgress = ({ currentTime }: { currentTime: string }) => (
+  <SectionCard>
+    <h1 className="text-2xl font-bold mb-3 text-center">Your Today's Progress!</h1>
+    <p className="text-gray-700 text-center">
+      Hey! {currentTime} left, you can still complete the challenge and update
+      your progress!
+    </p>
+    <button className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md">
+      Click to update your progress
+    </button>
+  </SectionCard>
+);
 
-const TodaysMotivation = () => {
-    return (
-        <div>
-            <div className="flex flex-col justify-center gap-2 border-[#A2A9D3] bg-[#512D6D] p-5 rounded-lg w-full text-center text-white">
-                <h1 className="font-semibold text-xl">Today's Motivation</h1>
-                <p>Gear up your day! Ready for the challenge?</p>
-            </div>
-        </div>
-    );
-}
+const TodaysMotivation = () => (
+  <SectionCard>
+    <h1 className="text-2xl font-bold mb-3 text-center">Today's Motivation</h1>
+    <p className="text-gray-700 text-center">
+      Gear up your day! Ready for the challenge?
+    </p>
+  </SectionCard>
+);
 
 const Home = () => {
-    const token = localStorage.getItem("token");
-    const [currentTime, setCurrentTime] = useState(new Date().toLocaleString());
+  const token = localStorage.getItem("token");
+  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentTime(new Date().toLocaleString());
-        }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
+  return (
+    <>
+      {/* <Navbar /> */}
+      {token && (
         <>
-            <Navbar />
-            {token ? (
-                <>
-                    <div className="flex flex-col justify-center gap-5 m-5 md:m-20 text-white">
-                        <TodaysMotivation />
-                        <YesterdaysProgress />
-                        <TodaysProgress currentTime={currentTime} />
-                        <div className="relative bg-[#5E2A8C] shadow-lg mt-5 rounded-lg w-full h-[60vh] text-white"></div>
-                    </div>
-                    <Contacts />
-                </>
-            )
-                :
-                null
-            }
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 p-8">
+            <TodaysMotivation />
+            <YesterdaysProgress />
+            <TodaysProgress currentTime={currentTime} />
+          </div>
+          <Tasks />
+          <Contacts />
         </>
-    );
-}
+      )}
+    </>
+  );
+};
 
 export default Home;

@@ -3,10 +3,10 @@
 
 const Contacts = () => {
     return (
-        <div id="contact" className="flex flex-col justify-between text-yellow-200">
+        <div id="contact" className="flex flex-col justify-between bg-[#f7f1de] text-black">
 
             {/* Rotaract Club Emphasis Section */}
-            <div className="bg-purple-700 px-5 py-3">
+            <div className="px-5 py-7">
                 <div className="mb-5 text-center">
                     <h2 className="font-bold text-2xl">
                         Proudly Supported by the Rotaract Club of SIET
@@ -39,7 +39,7 @@ const Contacts = () => {
             </div>
 
             {/* Header Section */}
-            <div className='flex flex-col justify-center items-center gap-5 bg-purple-700 px-5 py-10'>
+            <div className='flex flex-col justify-center items-center gap-5 px-5 py-10'>
                 <h1 className='font-bold text-3xl text-center'>Contact</h1>
                 <div className="flex flex-col items-center gap-3 text-md">
                     <div className="text-center">
@@ -78,7 +78,7 @@ const Contacts = () => {
             </div>
 
             {/* Footer Section */}
-            <div className="bottom-0 flex justify-center items-center bg-purple-950 p-5 w-full">
+            <div className="bottom-0 flex justify-center items-center p-5 w-full">
                 <p className="inline-flex flex-row items-center gap-3 text-center text-white">
                     For more updates, follow Rotaract SIET:
                     <a

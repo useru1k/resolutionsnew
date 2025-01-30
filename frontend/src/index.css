@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-  background-color: #111111;
+  background-color: #fff;
   font-family: 'Poppins', sans-serif;
 }
 
 .border-main {
-  border: 0.5px solid #6b6363;
+  border: 0.5px solid #f7f1de;
 }
 
-::selection {
+/* ::selection {
   background-color: #e7b59c;
-}
+} */
